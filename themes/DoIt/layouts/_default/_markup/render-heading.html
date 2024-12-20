@@ -11,7 +11,7 @@
 
 {{- if $isEnable -}}
     {{/* Set the count for child level to 0 */}}
-    {{- .Page.Store.SetInMap "heading-counter" (string (add .Level 1)) 0 -}}
+    {{- .Page.Scratch.SetInMap "heading-counter" (string (add .Level 1)) 0 -}}
 {{- end -}}
 
 <h{{ .Level }} id="{{ .Anchor | safeURL }}" class="headerLink">
@@ -19,9 +19,9 @@
     {{- if $isEnable -}}
 
         {{/* Add 1 to the current level */}}
-        {{- $headingMap := .Page.Store.Get "heading-counter" -}}
+        {{- $headingMap := .Page.Scratch.Get "heading-counter" -}}
         {{- $count := (string .Level) | index $headingMap | int | add 1 -}}
-        {{- .Page.Store.SetInMap "heading-counter" (string .Level) $count -}}
+        {{- .Page.Scratch.SetInMap "heading-counter" (string .Level) $count -}}
 
         {{/* Get the counters for all levels */}}
         {{- $h1 := "1" | index $headingMap | int | string -}}

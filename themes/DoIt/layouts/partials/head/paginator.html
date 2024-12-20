@@ -12,7 +12,7 @@
         {{- else -}}
             {{- $pages = .Paginate $pages -}}
         {{- end -}}
-        {{- .Store.Set "paginatorPager" $pages -}}
+        {{- .Scratch.Set "paginatorPager" $pages -}}
     {{- end -}}
 
 {{- else if and .IsSection .Pages -}}
@@ -22,7 +22,7 @@
     {{- else -}}
         {{- $pages = .Paginate $pages -}}
     {{- end -}}
-    {{- .Store.Set "paginatorPager" $pages -}}
+    {{- .Scratch.Set "paginatorPager" $pages -}}
 {{- else if and (eq .Kind "term") .Pages -}}
     {{- $taxonomy := .Data.Singular -}}
     {{-  $pages := .Pages.ByParam "series_weight" -}}
@@ -41,5 +41,5 @@
             {{- $pages = .Paginate $pages -}}
         {{- end -}}
     {{- end -}}
-    {{- .Store.Set "paginatorPager" $pages -}}
+    {{- .Scratch.Set "paginatorPager" $pages -}}
 {{- end -}}

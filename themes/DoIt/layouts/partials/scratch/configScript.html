@@ -1,4 +1,4 @@
-{{- $this := .Store.Get "this" -}}
+{{- $this := .Scratch.Get "this" -}}
 {{- $configScript := $this.configScript | default slice -}}
 {{- $configScript = $configScript | append (slice .Data) -}}
-{{- .Store.SetInMap "this" "configScript" $configScript -}}
+{{- .Scratch.SetInMap "this" "configScript" $configScript -}}

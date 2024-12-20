@@ -1,8 +1,8 @@
 {{- define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end -}}
 
 {{- define "content" -}}
-    {{- .Page.Store.SetInMap "this" "tablesort" true -}}
-    {{- $params := .Store.Get "params" -}}
+    {{- .Page.Scratch.Set "enableTablesort" true -}}
+    {{- $params := .Scratch.Get "params" -}}
     {{- $toc := $params.toc -}}
     {{- if eq $toc true -}}
     {{- $toc = .Site.Params.page.toc | default dict -}}
@@ -100,7 +100,7 @@
                     {{ $readingTime := int (math.Ceil (div (float .WordCount) $reading_speed)) }}
                     {{ partial "plugin/fontawesome.html" (dict "Style" "regular" "Icon" "clock") }}&nbsp;{{ T "readingTime" $readingTime }}&nbsp;
                 {{- end -}}
-                {{- $comment := .Store.Get "comment" | default dict -}}
+                {{- $comment := .Scratch.Get "comment" | default dict -}}
                 {{- /* Visitor Count */ -}}
                 {{- if $comment.enable | and $comment.valine.enable | and $comment.valine.visitor -}}
                     <span id="{{ .RelPermalink }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">

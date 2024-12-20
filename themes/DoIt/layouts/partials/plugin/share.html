@@ -1,5 +1,5 @@
-{{- $share := (.Store.Get "params").share | default dict -}}
-{{- .Page.Store.SetInMap "this" "sharer" true -}}
+{{- $share := (.Scratch.Get "params").share | default dict -}}
+{{- .Page.Scratch.Set "enableSharer" true -}}
 {{- if $share.enable -}}
     {{- /* 001: Twitter */ -}}
     {{- if $share.Twitter -}}

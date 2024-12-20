@@ -1,4 +1,4 @@
-{{- .Store.Set "version" "0.4.0" -}}
+{{- .Scratch.Set "version" "0.4.0" -}}
 
 {{- /* Check Hugo version */ -}}
 {{- $OLDEST_SUPPORTED_HUGO_VERSION := "0.134.0" -}}
@@ -28,14 +28,14 @@
             {{- end -}}
         {{- end -}}
     {{- end -}}
-    {{- .Store.Set "cdn" $cdn -}}
-    {{- .Store.Set "fingerprint" .Site.Params.fingerprint -}}
-    {{- .Store.Set "analytics" .Site.Params.analytics -}}
-    {{- .Store.Set "comment" $params.comment -}}
+    {{- .Scratch.Set "cdn" $cdn -}}
+    {{- .Scratch.Set "fingerprint" .Site.Params.fingerprint -}}
+    {{- .Scratch.Set "analytics" .Site.Params.analytics -}}
+    {{- .Scratch.Set "comment" $params.comment -}}
     {{- if eq .Params.comment true -}}
-        {{- .Store.Set "comment" .Site.Params.comment -}}
+        {{- .Scratch.Set "comment" .Site.Params.comment -}}
     {{- else if eq .Params.comment false -}}
-        {{- .Store.Set "comment" dict -}}
+        {{- .Scratch.Set "comment" dict -}}
     {{- end -}}
 {{- else if eq .Site .Sites.Default -}}
     {{- warnf "\n\nCurrent environment is \"development\". The \"comment system\", \"PWA\", \"CDN\" and \"fingerprint\" will be disabled.\n当前运行环境是 \"development\". \"评论系统\", \"PWA\", \"CDN\" 和 \"fingerprint\" 不会启用.\n\n" -}}
@@ -49,7 +49,7 @@
     {{- errorf ".Site.Author is deprecated, use .Site.Params.Author instead. See https://github.com/gohugoio/hugo/issues/12228" -}}
 {{- end -}}
 
-{{- .Store.Set "params" $params -}}
-{{- .Store.Set "this" dict -}}
+{{- .Scratch.Set "params" $params -}}
+{{- .Scratch.Set "this" dict -}}
 
 {{- partial "plugin/compatibility.html" . -}}

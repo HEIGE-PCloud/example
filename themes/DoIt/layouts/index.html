@@ -1,5 +1,5 @@
 {{- define "title" }}
-    {{- $paginatorPager := .Store.Get "paginatorPager" -}}
+    {{- $paginatorPager := .Scratch.Get "paginatorPager" -}}
     {{- if and $paginatorPager (gt $paginatorPager.PageNumber 1) -}}
         {{- T "prefixPageNumber" }} {{ $paginatorPager.PageNumber }} {{ T "suffixPageNumber" }} - {{ $.Site.Title -}}
     {{ else }}
@@ -8,7 +8,7 @@
 {{- end -}}
 
 {{- define "content" -}}
-    {{- $params := .Store.Get "params" -}}
+    {{- $params := .Scratch.Get "params" -}}
     {{- $profile := .Site.Params.home.profile -}}
     {{- $posts := .Site.Params.home.posts -}}
 

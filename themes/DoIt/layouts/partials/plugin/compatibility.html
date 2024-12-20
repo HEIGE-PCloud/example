@@ -1,6 +1,6 @@
 {{- $compatibility := .Site.Params.compatibility | default dict -}}
-{{- $cdn := .Store.Get "cdn" | default dict -}}
-{{- $fingerprint := .Store.Get "fingerprint" -}}
+{{- $cdn := .Scratch.Get "cdn" | default dict -}}
+{{- $fingerprint := .Scratch.Get "fingerprint" -}}
 
 {{- /* Polyfill.io */ -}}
 {{- if $compatibility.polyfill -}}
@@ -11,12 +11,12 @@
         {{- end -}}
     {{- end -}}
     {{- with $features | uniq -}}
-        {{- delimit . "%2C" | printf "https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=%v" | dict "Source" | dict "Scratch" $.Store "Data" | partial "scratch/script.html" -}}
+        {{- delimit . "%2C" | printf "https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=%v" | dict "Source" | dict "Scratch" $.Scratch "Data" | partial "scratch/script.html" -}}
     {{- end -}}
 {{- end -}}
 
 {{- /* object-fit-images */ -}}
 {{- if $compatibility.objectFit -}}
     {{- $source := $cdn.objectFitImagesJS | default "lib/object-fit-images/ofi.min.js" -}}
-    {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Store "Data" | partial "scratch/script.html" -}}
+    {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
 {{- end -}}

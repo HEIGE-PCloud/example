@@ -1,5 +1,5 @@
 {{ $result := transform.HighlightCodeBlock . }}
-{{- $id := dict "Scratch" .Page.Store | partial "function/id.html" -}}
+{{- $id := dict "Scratch" .Page.Scratch | partial "function/id.html" -}}
 {{- $title := .Attributes.title | default .Type | default "text" -}}
 {{- $lineNos := cond (eq .Options.linenos false) "" "show-line-numbers" -}}
 {{- $lines := len (split .Inner "\n") -}}

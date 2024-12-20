@@ -38,9 +38,9 @@
     {{- with $profile.subtitle -}}
     <h2 class="home-subtitle">
         {{- if $profile.typeit -}}
-        {{- $id := dict "Content" . "Scratch" $.Store | partial "function/id.html" -}}
+        {{- $id := dict "Content" . "Scratch" $.Scratch | partial "function/id.html" -}}
         <div id="{{ $id }}" class="typeit"></div>
-        {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Store.Get "this") | $.Store.Set "this" -}}
+        {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}}
         {{- else -}}
         {{- . -}}
         {{- end -}}
@@ -83,7 +83,7 @@
         {{- $social = dict "Id" $value | merge $social -}}
         {{- end -}}
         {{- if $social.Icon.Simpleicons -}}
-        {{- $prefix := ($.Store.Get "cdn" | default dict).simpleIconsPrefix -}}
+        {{- $prefix := ($.Scratch.Get "cdn" | default dict).simpleIconsPrefix -}}
         {{- $social = dict "Prefix" $prefix | dict "Icon" | merge $social -}}
         {{- end -}}
         {{- $socialArr = $socialArr | append $social -}}

@@ -21,7 +21,7 @@
 {{- end -}}
 
 {{- define "blogPosting" -}}
-{{- $params := .Store.Get "params" -}}
+{{- $params := .Scratch.Get "params" -}}
 {{- with .Page -}}
     {
         {{- if not $.IsHome | and .IsPage -}}
@@ -155,7 +155,7 @@
 {{- /* Home SEO */ -}}
 {{- if .IsHome -}}
     {{- $showBlogPosting := and .Site.RegularPages .Site.Params.home.posts.enable -}}
-    {{- $paginatorPager := .Store.Get "paginatorPager" -}}
+    {{- $paginatorPager := .Scratch.Get "paginatorPager" -}}
     {{- /* If the post is disabled then it is the homepage */ -}}
     {{- $postDisable := not $.Site.Params.home.posts.enable -}}
     {{- $isPaginationAndHomepage := and $paginatorPager (eq $paginatorPager.PageNumber 1) (eq $paginatorPager.URL "/") -}}
