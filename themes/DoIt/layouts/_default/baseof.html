@@ -77,8 +77,6 @@
         <main class="main">
             <div class="container">
                 {{- block "content" . }}{{ end -}}
-                {{- warnf ".Content for page %v is called" ($.Page.Permalink) -}}
-
             </div>
         </main>
         {{- partial "footer.html" . -}}
@@ -100,8 +98,8 @@
 
     {{- /* Load JavaScript scripts and CSS */ -}}
     {{- $noop := .Content -}}
-    {{- warnf ".Page.Permalink %v" .Page.Permalink -}}
-    {{- warnf ".Page.Scratch.Get this mermaid %v" (.Page.Scratch.Get "this").mermaid -}}
+    {{- warnf "baseof.html: .Page.Permalink %v" .Page.Permalink -}}
+    {{- warnf "baseof.html: .Page.Scratch.Get this mermaid %v" (.Page.Scratch.Get "this").mermaid -}}
     {{- partial "assets.html" . -}}
 
     {{/*  Speculation Rules  */}}
