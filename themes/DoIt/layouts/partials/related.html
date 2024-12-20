@@ -1,4 +1,4 @@
-{{- $params := .Scratch.Get "params" -}}
+{{- $params := .Store.Get "params" -}}
 
 {{ $related := first $params.related.count (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
 {{ with $related }}

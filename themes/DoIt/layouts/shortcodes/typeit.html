@@ -22,12 +22,12 @@
 {{- end -}}
 
 {{- /* trim the newline */ -}}
-{{- $id := dict "Content" $content "Scratch" .Page.Scratch | partial "function/id.html" -}}
+{{- $id := dict "Content" $content "Scratch" .Page.Store | partial "function/id.html" -}}
 {{- $key := .Get "group" | string | default $id -}}
-{{- $typeitMap := (.Page.Scratch.Get "this").typeitMap | default dict -}}
+{{- $typeitMap := (.Page.Store.Get "this").typeitMap | default dict -}}
 {{- $group := index $typeitMap $key -}}
 {{- $group = $group | default slice | append $id -}}
-{{- dict $key $group | merge $typeitMap | .Page.Scratch.SetInMap "this" "typeitMap" -}}
+{{- dict $key $group | merge $typeitMap | .Page.Store.SetInMap "this" "typeitMap" -}}
 
 {{- $attrs := printf `id="%v"` $id -}}
 {{- with $classList -}}

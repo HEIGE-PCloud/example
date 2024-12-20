@@ -2,8 +2,8 @@
     {{- errorf "Only named params is supported: %s" .Position -}}
 {{ end }}
 {{ $title := .Get "title" }}
-{{ $id := dict "Content" "tab" "Scratch" .Page.Scratch | partial "function/id.html" }}
-{{ .Parent.Scratch.Add "tabs" (slice (dict "title" $title "id" $id)) }}
+{{ $id := dict "Content" "tab" "Scratch" .Page.Store | partial "function/id.html" }}
+{{ .Parent.Store.Add "tabs" (slice (dict "title" $title "id" $id)) }}
 <div 
     role="tabpanel" 
     aria-labelledby="tab-{{ $id }}"

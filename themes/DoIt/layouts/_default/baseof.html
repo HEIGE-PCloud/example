@@ -89,7 +89,7 @@
         </a>
 
         {{- /* comment button */ -}}
-        {{- if  (.Page.Scratch.Get "this").commentEnabled -}}
+        {{- if  (.Page.Store.Get "this").commentEnabled -}}
         <a href="#comments" id="view-comments" class="fixed-button" title="{{ T `viewComments` }}">
             {{ partial "plugin/fontawesome.html" (dict "Style" "solid" "Icon" "comment") }}
         </a>
@@ -99,7 +99,7 @@
     {{- /* Load JavaScript scripts and CSS */ -}}
     {{- $noop := .Content -}}
     {{- warnf "baseof.html: .Page.Permalink %v" .Page.Permalink -}}
-    {{- warnf "baseof.html: .Page.Scratch.Get this mermaid %v" (.Page.Scratch.Get "this").mermaid -}}
+    {{- warnf "baseof.html: .Page.Store.Get this mermaid %v" (.Page.Store.Get "this").mermaid -}}
     {{- partial "assets.html" . -}}
 
     {{/*  Speculation Rules  */}}

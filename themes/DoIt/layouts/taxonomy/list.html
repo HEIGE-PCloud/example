@@ -8,7 +8,7 @@
 {{- end -}}
 
 {{- define "content" -}}
-    {{- $params := .Scratch.Get "params" -}}
+    {{- $params := .Store.Get "params" -}}
     <div class="page archive">
         {{- /* Title */ -}}
         <h2 class="single-title">
@@ -18,7 +18,7 @@
             {{- else if eq $taxonomy "tag" -}}
                 {{ partial "plugin/fontawesome.html" (dict "Style" "solid" "Icon" "tag") }}&nbsp;{{ .Title }}
             {{- else if eq $taxonomy "author" -}}
-                {{- .Scratch.Set "name" .Title -}}
+                {{- .Store.Set "name" .Title -}}
                 {{- if $.Site.Data.authors -}}
                     {{- with partial "function/author.html" (dict "name" .Title "author" (index $.Site.Data.authors .Title) "lang" ($.Params.lang | default $.Lang)) -}}
                         {{- .name | safeHTML -}}

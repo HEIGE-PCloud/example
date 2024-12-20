@@ -1,4 +1,4 @@
-{{- $this := .Scratch.Get "this" -}}
+{{- $this := .Store.Get "this" -}}
 {{- $commentScript := $this.commentScript | default slice -}}
 {{- $commentScript = $commentScript | append (slice .Data) -}}
-{{- .Scratch.SetInMap "this" "commentScript" $commentScript -}}
+{{- .Store.SetInMap "this" "commentScript" $commentScript -}}

@@ -1,5 +1,5 @@
-{{- $cdn := .Scratch.Get "cdn" | default dict -}}
-{{- $fingerprint := .Scratch.Get "fingerprint" -}}
+{{- $cdn := .Store.Get "cdn" | default dict -}}
+{{- $fingerprint := .Store.Get "fingerprint" -}}
 
 {{- if not .Site.Params.app.noFavicon -}}
     {{- with .Site.Params.app.svgFavicon -}}
@@ -19,7 +19,7 @@
 {{- end -}}
 
 {{ $canonicalURL := .Permalink }}
-{{ with .Scratch.Get "paginatorPager"  }}
+{{ with .Store.Get "paginatorPager"  }}
   {{ $canonicalURL = .URL | absLangURL }}
 {{ end }}
 <link rel="canonical" href="{{ $canonicalURL }}" />

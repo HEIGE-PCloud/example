@@ -1,7 +1,7 @@
 <pre class="mermaid">
     {{- .Inner | safeHTML }}
 </pre>
-{{- .Page.Scratch.SetInMap "this" "mermaid" true -}}
+{{- .Page.Store.SetInMap "this" "mermaid" true -}}
 {{- warnf "render.html: Mermaid code block found in %s" .Page.Path -}}
 {{- warnf "render.html: .Page.Permalink %v" .Page.Permalink -}}
-{{- warnf "render.html: .Page.Scratch.Get this mermaid %v" (.Page.Scratch.Get "this").mermaid -}}
+{{- warnf "render.html: .Page.Store.Get this mermaid %v" (.Page.Store.Get "this").mermaid -}}

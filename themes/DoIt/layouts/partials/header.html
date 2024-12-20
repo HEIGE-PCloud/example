@@ -11,10 +11,10 @@
                 <span class="tw-mr-1">{{ . | safeHTML }}</span>
                 {{- end -}}
                 {{- if .typeit -}}
-                {{- $id := dict "Content" .name "Scratch" $.Scratch "Id" "desktop-header-typeit" | partial
+                {{- $id := dict "Content" .name "Scratch" $.Store "Id" "desktop-header-typeit" | partial
                 "function/id.html" -}}
                 <span id="{{ $id }}" class="typeit"></span>
-                {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}}
+                {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Store.Get "this") | $.Store.Set "this" -}}
                 {{- else -}}
                 {{- .name -}}
                 {{- end -}}
@@ -116,10 +116,10 @@
                     <span class="tw-mr-1">{{ . | safeHTML }}</span>
                     {{- end -}}
                     {{- if .typeit -}}
-                    {{- $id := dict "Content" .name "Scratch" $.Scratch "Id" "mobile-header-typeit" | partial
+                    {{- $id := dict "Content" .name "Scratch" $.Store "Id" "mobile-header-typeit" | partial
                     "function/id.html" -}}
                     <span id="{{ $id }}" class="typeit"></span>
-                    {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this"
+                    {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Store.Get "this") | $.Store.Set "this"
                     -}}
                     {{- else -}}
                     {{- .name -}}
