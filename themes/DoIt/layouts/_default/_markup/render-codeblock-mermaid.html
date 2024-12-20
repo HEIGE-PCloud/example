@@ -2,3 +2,4 @@
     {{- .Inner | safeHTML }}
 </pre>
 {{- .Page.Scratch.SetInMap "this" "mermaid" true -}}
+{{- warnf "Mermaid code block found in %s" .Page.Path -}}
