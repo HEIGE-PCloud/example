@@ -99,6 +99,7 @@
     </div>
 
     {{- /* Load JavaScript scripts and CSS */ -}}
+    {{- $noop := .Content -}}
     {{- partial "assets.html" . -}}
 
     {{/*  Speculation Rules  */}}
