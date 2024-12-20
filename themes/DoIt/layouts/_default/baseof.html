@@ -100,6 +100,8 @@
 
     {{- /* Load JavaScript scripts and CSS */ -}}
     {{- $noop := .Content -}}
+    {{- warnf ".Page.Permalink %v" .Page.Permalink -}}
+    {{- warnf ".Page.Scratch.Get this mermaid %v" (.Page.Scratch.Get "this").mermaid -}}
     {{- partial "assets.html" . -}}
 
     {{/*  Speculation Rules  */}}
