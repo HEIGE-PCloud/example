@@ -25,11 +25,9 @@ jobs:
             - name: Build Web
               run: hugo --minify
 
+
             - name: Deploy Web
               uses: peaceiris/actions-gh-pages@v3
               with:
-                  PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-                  EXTERNAL_REPOSITORY: dre4merp/dre4merp.github.io
-                  PUBLISH_BRANCH: master
-                  PUBLISH_DIR: ./public
-                  commit_message: ${{ github.event.head_commit.message }}
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./public
