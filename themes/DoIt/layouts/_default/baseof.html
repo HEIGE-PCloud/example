@@ -98,8 +98,7 @@
 
     {{- /* Load JavaScript scripts and CSS */ -}}
     {{- $noop := .Content -}}
-    {{- warnf "baseof.html: .Page.Permalink %v" .Page.Permalink -}}
-    {{- warnf "baseof.html: .Page.Store.Get this mermaid %v" (.Page.Store.Get "this").mermaid -}}
+    {{- warnf "baseof.html: .Page.Store.Get this mermaid %v %v" .Page.Permalink (.Page.Store.Get "this").mermaid -}}
     {{- partial "assets.html" . -}}
 
     {{/*  Speculation Rules  */}}
