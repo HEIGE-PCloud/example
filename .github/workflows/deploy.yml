@@ -1,38 +1,41 @@
 name: deploy
 
 on:
-    push:
-    workflow_dispatch:
+  push:
+  workflow_dispatch:
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        concurrency:
-            group: ${{ github.workflow }}-${{ github.ref }}
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                  submodules: true
-                  fetch-depth: 0
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        hugo-version: ['0.140.0', '0.134.0', '0.135.0', '0.136.0', '0.137.0', '0.138.0', '0.139.0']
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
 
-            - name: Setup Hugo
-              uses: peaceiris/actions-hugo@v3
-              with:
-                  hugo-version: '0.140.0'
-                  extended: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ matrix.hugo-version }}
+          extended: true
 
-            - name: Build Web
-              run: hugo --minify
+      - name: Build Web
+        run: hugo --minify
 
-            - name: Upload Artifact
-              uses: actions/upload-artifact@v4
-              with:
-                  name: public
-                  path: ./public
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: public
+          path: ./public
 
-            - name: Deploy Web
-              uses: peaceiris/actions-gh-pages@v3
-              with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: ./public
+      - name: Deploy Web
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
