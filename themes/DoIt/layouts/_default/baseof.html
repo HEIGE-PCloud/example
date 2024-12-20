@@ -77,6 +77,8 @@
         <main class="main">
             <div class="container">
                 {{- block "content" . }}{{ end -}}
+                {{- warnf ".Content for page %v is called" ($.Page.Permalink) -}}
+
             </div>
         </main>
         {{- partial "footer.html" . -}}

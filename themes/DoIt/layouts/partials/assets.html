@@ -143,6 +143,7 @@
 {{- end -}}
 
 {{- /* mermaid */ -}}
+{{/*  {{- warnf "Scratch %v" .Scratch -}}  */}}
 {{- warnf "Mermaid status %v %v" ((.Scratch.Get "this").mermaid) ($.Page.Permalink) -}}
 {{- if (.Scratch.Get "this").mermaid -}}
 <script type="module">
