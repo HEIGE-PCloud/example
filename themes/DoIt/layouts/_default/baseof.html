@@ -97,8 +97,6 @@
     </div>
 
     {{- /* Load JavaScript scripts and CSS */ -}}
-    {{- $noop := .Content -}}
-    {{- warnf "baseof.html: .Page.Store.Get this mermaid %v %v" .Page.Permalink (.Page.Store.Get "this").mermaid -}}
     {{- partial "assets.html" . -}}
 
     {{/*  Speculation Rules  */}}
